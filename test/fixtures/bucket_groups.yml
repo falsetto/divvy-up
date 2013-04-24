@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+default:
+  id: 1
+  amount: 2500
+  name: Default
+  user_id: 1
+
+two:
+  id: 2
+  amount: 2500
+  name: Mid-Month
+  user_id: 2
