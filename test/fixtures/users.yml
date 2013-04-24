@@ -1,9 +1,11 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+jedhurt:
+  id: 1
+  provider: twitter
+  uid: 'jh1234'
+  name: Jedidiah Hurt
 
-one:
-  username: MyString
-  password: MyString
-
-two:
-  username: MyString
-  password: MyString
+dallas_reedy:
+  id: 2
+  provider: twitter
+  uid: 'dr4321'
+  name: Dallas Reedy
