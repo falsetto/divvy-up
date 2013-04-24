@@ -1,8 +1,8 @@
 DivvyUpBaseBackend::Application.routes.draw do
-  resources :buckets
 
   match '*path', :to => 'application#cors',
         :conditions => {:method => :options}
+    resources :buckets
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

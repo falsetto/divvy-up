@@ -1,12 +1,12 @@
 class BucketsController < ApplicationController
-  before_filter :set_headers
-
+  before_filter :authenticate
   respond_to :json
+  inherit_resources
+  belongs_to :bucket_group
 
-  def index
-    headers['Access-Control-Allow-Origin'] = '*'
-    @user = User.where(id: params[:user_id]).first
-    @buckets = @user.buckets
-    respond_with @buckets
+  protected
+
+  def begin_of_association_chain
+    current_user
   end
 end
