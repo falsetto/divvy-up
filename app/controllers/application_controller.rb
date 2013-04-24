@@ -1,18 +1,31 @@
 class ApplicationController < ActionController::Base
+  after_filter :set_csrf_cookie
   protect_from_forgery
-  before_filter :set_headers
 
-  def cors
-    render :nothing => true, :status => 200
+  protected
+
+  def verified_request?
+    super || form_authenticity_token == request.headers['X_XSRF_TOKEN']
   end
 
-  private
+  def set_csrf_cookie
+    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+  end
 
-  def set_headers
-    headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Expose-Headers'] = 'ETag'
-    headers['Access-Control-Allow-Methods'] = 'GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD'
-    headers['Access-Control-Allow-Headers'] = '*,x-requested-with,Content-Type,If-Modified-Since,If-None-Match'
-    headers['Access-Control-Max-Age'] = '86400'
+  def redirect_if_logged_in
+    redirect_to '/app' if current_user
+  end
+
+  def current_user=(user)
+    session[:user_id] = user.id
+  end
+
+  def current_user
+    return nil unless session[:user_id]
+    @user ||= User.find(session[:user_id])
+  end
+
+  def authenticate
+    current_user || redirect_to('/')
   end
 end
