@@ -1,10 +1,16 @@
 DivvyUpBaseBackend::Application.routes.draw do
+  root to: 'pages#index'
 
-  match '*path', :to => 'application#cors',
-        :conditions => {:method => :options}
+  match 'app', to: 'pages#app'
+
+  get 'sessions/create'
+  match 'logout', to: 'sessions#destroy'
+
   resources :bucket_groups do
     resources :buckets
   end
+
+  match '/auth/:provider/callback', to: 'sessions#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
