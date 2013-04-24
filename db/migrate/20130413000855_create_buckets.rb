@@ -3,8 +3,8 @@ class CreateBuckets < ActiveRecord::Migration
     create_table :buckets do |t|
       t.string :name
       t.float :percentage
-      t.integer :order
-      t.integer :user_id
+      t.integer :priority
+      t.integer :bucket_group_id
 
       t.timestamps
     end
