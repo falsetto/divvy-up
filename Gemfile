@@ -11,6 +11,7 @@ gem 'omniauth-twitter'
 gem 'inherited_resources'
 gem 'font-awesome-rails'
 gem 'ranked-model'
+gem 'unicorn'
 
 group :production do
   gem 'pg'
