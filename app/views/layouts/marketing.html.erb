@@ -10,37 +10,48 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag 'application', :media => 'all' %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="marketing">
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
 
-    <!--[if lt IE 9]>
-      <script src="components/es5-shim/es5-shim.js"></script>
-      <script src="components/json3/lib/json3.min.js"></script>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
-   
     <div id="header" class="bg">
       <div class="container">
         <div class="content">
           <h1>
             Divvy Up.
-            <%- if @user -%>
-              <a href="/logout" class="btn logout"><i class="icon-signout"></i> Logout</a>
-            <%- end -%>
           </h1>
+          <h2>
+            Solve the simple workflow of divvying up portions of your paychecks into various savings “buckets.”
+            
+          </h2>
+            <div class="sign-in-btn"><a href="/auth/twitter">
+              <%= image_tag('twitter-sign-in.png', alt: 'Sign in with Twitter') %>
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
     <div id="main" class="bg">
       <div class="container">
-        <%= yield -%>
+        <div class="content">
+          <div class="column">
+            <h3>1. Enter Total to Divvy</h3>
+            <%= image_tag('marketing/enter-total.png') %>
+          </div>
+          <div class="column">
+            <h3>2. Add Your Buckets</h3>
+            <%= image_tag('marketing/create-buckets.png') %>
+          </div>
+          <div class="column">
+            <h3>3. See The Breakdown</h3>
+            <%= image_tag('marketing/breakdown.png') %>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -49,15 +60,11 @@
         <div class="content">
           <p class="copyright">
           <i>Divvy Up</i> was created by
-          <a href="http://dallasreedy.com" target="_blank">Dallas Reedy</a>
-          to help him and his wife solve the simple workflow of divvying up portions of their
-          paychecks into their various savings “buckets.”
+          <a href="http://dallasreedy.com" target="_blank">Dallas Reedy</a>.
           </p>
         </div>
       </div>
     </div>
-
-    <%= javascript_include_tag "application" %>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
