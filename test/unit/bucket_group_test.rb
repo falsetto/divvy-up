@@ -7,7 +7,13 @@ class BucketGroupTest < ActiveSupport::TestCase
 
   test 'requires amount' do
     @bucket_group.valid?
-    @bucket_group.errors[:amount].wont_be_nil
+    @bucket_group.errors[:amount].wont_be_empty
+  end
+
+  test 'amount must be a number' do
+    @bucket_group.amount = 'five dollars'
+    @bucket_group.valid?
+    @bucket_group.errors[:amount].wont_be_empty
   end
 
   test 'allows mass assignment of amount' do
@@ -16,7 +22,7 @@ class BucketGroupTest < ActiveSupport::TestCase
 
   test 'requires name' do
     @bucket_group.valid?
-    @bucket_group.errors[:name].wont_be_nil
+    @bucket_group.errors[:name].wont_be_empty
   end
 
   test 'allows mass assignment of name' do
