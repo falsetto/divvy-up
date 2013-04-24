@@ -1,0 +1,73 @@
+<div class="content">
+  <div class="divvy-amount">
+    <form novalidate name="bucketGroupForm">
+      <label>$</label>
+      <input du-currency
+             ng-change="queueSync(bucketGroupForm, bucketGroup)"
+             ng-model="bucketGroup.amount"
+             
+             id="total-to-divvy"
+             placeholder="Total to Divvy Up"
+             required
+             type="text">
+     </form>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Divvy To</th>
+        <th>Amount</th>
+        <th>New Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="bucket in buckets">
+        <td>
+            <div class="actions">
+              <a ng-click="destroyBucket(bucket)" class="btn btn-icon"><i class="icon-trash"></i></a>
+              <a ng-click="bucketsService.incrementPosition(bucket)" ng-class="{ disabled: $last }" class="btn btn-icon"><i class="icon-arrow-down"></i></a>
+              <a ng-click="bucketsService.decrementPosition(bucket)" ng-class="{ disabled: $first }" class="btn btn-icon"><i class="icon-arrow-up"></i></a>
+            </div>
+
+            <form novalidate name="bucketForm">
+              <input du-percentage
+                     ng-model="bucket.percentage"
+                     ng-change="queueSync(bucketForm, bucket)"
+                     class="input-percentage"
+                     max="100"
+                     min="0"
+                     name="percentage"
+                     required
+                     step=".01"
+                     type="number">
+              <label class="label-percentage">%</label>
+
+              <input ng-change="queueSync(bucketForm, bucket)"
+                     ng-model="bucket.name"
+                     class="input-name"
+                     name="name"
+                     required
+                     type="text">
+            </form>
+        </td>
+        <td>$ <b>{{divvyer.divvyAmount(bucketGroup.amount, bucket) | currency:""}}</b></td>
+        <td>$ <span>{{divvyer.totalAfterDivvying(bucketGroup.amount, bucket) | currency:""}}</span></td>
+      </tr>
+      <tr class="add-bucket">
+        <td>
+          <div class="actions">
+            <a ng-click="bucketsService.create(bucketGroup)" class="btn-icon"><i class="icon-plus"></i></a>
+          </div>
+
+          <input class="input-percentage" disabled value="0">
+          <label class="label-percentage">%</label>
+          <input class="input-name" value="New bucket" disabled>
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
