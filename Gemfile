@@ -5,12 +5,16 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-# gem 'sqlite3'
-gem 'mysql2'
+# gem 'mysql2'
 
 gem 'omniauth-twitter'
 gem 'inherited_resources'
+gem 'font-awesome-rails'
+gem 'ranked-model'
 
+group :production do
+  gem 'pg'
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -21,6 +25,17 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'sqlite3'
+  gem 'pry'
+  gem 'pry-debugger'
+end
+
+group :test do
+  gem 'minitest-spec-rails'
+  gem 'minitest-reporters'
 end
 
 gem 'jquery-rails'

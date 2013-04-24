@@ -11,20 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413000953) do
+ActiveRecord::Schema.define(:version => 20130422232529) do
 
-  create_table "buckets", :force => true do |t|
+  create_table "bucket_groups", :force => true do |t|
+    t.float    "amount"
     t.string   "name"
-    t.float    "percentage"
-    t.integer  "order"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  create_table "buckets", :force => true do |t|
+    t.string   "name"
+    t.float    "percentage"
+    t.integer  "priority"
+    t.integer  "bucket_group_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "password"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "api_key"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
