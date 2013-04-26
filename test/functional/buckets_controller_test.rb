@@ -29,9 +29,18 @@ class BucketsControllerTest < ActionController::TestCase
     response.status.to_s.first.wont_equal '3'
   end
 
-  test 'responds to json' do
-    skip
-    get :index, {}, user_id: users(:jedhurt).id
-    asssert_response 406
+  test 'does not accept xml requests' do
+    get :index, { bucket_group_id: 1, format: :xml }, user_id: users(:jedhurt).id
+    assert_response 406
+  end
+
+  test 'does not accept html requests' do
+    get :index, { bucket_group_id: 1, format: :html }, user_id: users(:jedhurt).id
+    assert_response 406
+  end
+
+  test 'accepts json requests' do
+    get :index, { bucket_group_id: 1, format: :json }, user_id: users(:jedhurt).id
+    assert_response 200
   end
 end

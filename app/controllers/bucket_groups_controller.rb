@@ -1,7 +1,7 @@
 class BucketGroupsController < ApplicationController
   before_filter :authenticate
-  inherit_resources
   respond_to :json
+  inherit_resources
 
   protected
 
