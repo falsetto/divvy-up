@@ -9,12 +9,13 @@ files = [
   JASMINE_ADAPTER,
   'vendor/assets/components/kb-bower-angular-unstable/angular.js',
   'vendor/assets/components/kb-bower-angular-unstable/angular-mobile.js',
+  'vendor/assets/components/kb-bower-angular-unstable/angular-resource.js',
   'vendor/assets/components/angular-mocks/angular-mocks.js',
   'app/components/underscore/underscore.js',
   'app/assets/javascripts/*.coffee',
   'app/assets/javascripts/**/*.coffee',
-  'test/angular/mock/**/*.js',
-  'test/angular/spec/**/*.js'
+  'test/angular/mock/**/*.coffee',
+  'test/angular/spec/**/*.coffee'
 ];
 
 preprocessors = {
