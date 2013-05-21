@@ -10,7 +10,7 @@ angular.module('divvyUp')
         $scope.bucketGroup = bucketGroups[0]
 
       $scope.$watch 'bucketGroup.id', (newValue, oldValue) ->
-        unless newValue == oldValue
+        if newValue
           $scope.buckets = buckets.query(bucket_group_id: $scope.bucketGroup.id)
 
       $scope.queueSync = (form, object) ->
@@ -19,5 +19,4 @@ angular.module('divvyUp')
       $scope.destroyBucket = (bucket) ->
         if $window.confirm 'Are you sure?'
           buckets.destroy(bucket)
-
   ])
