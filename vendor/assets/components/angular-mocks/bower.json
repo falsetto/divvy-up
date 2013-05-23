@@ -5,7 +5,7 @@
   "dependencies": {
     "angular": "1.0.6"
   },
-  "gitHead": "16a3023f706e672f537fa9f98d4b7f2ea8516a7c",
+  "gitHead": "aca28d63f8e64c794632eaa0f47d68b51c58b371",
   "readme": "bower-angular-mocks\n===================\n\nangular-mocks.js bower repo",
   "readmeFilename": "README.md",
   "_id": "angular-mocks@1.0.6",
