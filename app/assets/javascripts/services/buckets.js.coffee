@@ -1,46 +1,43 @@
 angular.module('divvyUp')
-  .factory 'buckets', ['$http', '$resource', ($http, $resource) ->
-    bucketData = []
+  .factory 'buckets', [
+    '$http', '$resource', '$rootScope',
+    ($http, $resource, $rootScope) ->
+      buckets = []
 
-    resource = $resource 'bucket_groups/:bucket_group_id/buckets/:id',
-      bucket_group_id: '@bucket_group_id'
-      id: '@id'
-    , update: method: 'PUT'
+      Bucket = $resource 'bucket_groups/:bucket_group_id/buckets/:id',
+        bucket_group_id: '@bucket_group_id'
+        id: '@id'
+      , update: method: 'PUT'
 
-    shiftPosition = (bucket, unit) ->
-      position = bucketData.indexOf(bucket)
-      return if position + unit >= bucketData.length
-      return if position + unit < 0
-      swappedBucket = bucketData[position + unit]
-      bucketData[position] = swappedBucket
-      bucketData[position + unit] = bucket
-      $http.put "/bucket_groups/#{bucket.bucket_group_id}/buckets/#{bucket.id}",
-        bucket: priority_position: position + unit
+      shiftPosition = (bucket, unit) ->
+        position = buckets.indexOf(bucket)
+        return if position + unit >= buckets.length
+        return if position + unit < 0
+        swappedBucket = buckets[position + unit]
+        buckets[position] = swappedBucket
+        buckets[position + unit] = bucket
+        $http.put "bucket_groups/#{bucket.bucket_group_id}/buckets/#{bucket.id}",
+          bucket: priority_position: position + unit
 
-    query: (callback) ->
-      bucketData = resource.query(callback)
-    create: (bucketGroup) ->
-      bucketInstance = new resource
-        bucket_group_id: bucketGroup.id
-        name: 'New bucket'
-        percentage: 0
-      bucketData.push bucketInstance
-      bucketInstance.$save()
-    destroy: (bucket) ->
-      bucketData.splice bucketData.indexOf(bucket), 1
-      bucket.$delete()
+      query: (callback) ->
+        buckets = Bucket.query(callback)
+      create: (bucketGroup) ->
+        bucket = new Bucket
+          bucket_group_id: bucketGroup.id
+          name: 'New bucket'
+          percentage: 0
+        buckets.push bucket
+        bucket.$save()
+      destroy: (bucket) ->
+        buckets.splice buckets.indexOf(bucket), 1
+        bucket.$delete()
 
-    bucketsUpTo: (priorityIndex) ->
-      _.sortBy(
-        _.filter(bucketData, (bucket) -> bucket.priority < priorityIndex)
-        , 'priority')
-      .reverse()
-    bucketsAfter: (priorityIndex) ->
-      _.sortBy(
-        _.filter(bucketData, (bucket) -> bucket.priority > priorityIndex)
-        , 'priority')
-    incrementPosition: (bucket) ->
-      shiftPosition(bucket, 1)
-    decrementPosition: (bucket) ->
-      shiftPosition(bucket, -1)
+      bucketsUpTo: (index) ->
+        buckets.slice(0, index).reverse()
+      bucketsAfter: (index) ->
+        buckets.slice(index + 1, buckets.length)
+      incrementPosition: (bucket) ->
+        shiftPosition(bucket, 1)
+      decrementPosition: (bucket) ->
+        shiftPosition(bucket, -1)
   ]
