@@ -3,13 +3,11 @@ angular.module('divvyUp')
     restrict: 'A',
     require: 'ngModel',
     link: (scope, element, attr, ngModelCtrl) ->
-      fromUser = (text) ->
-        (parseFloat(text) || 0) / 100
+      convertPercentageToFloat = (percentage) ->
+        (parseFloat(percentage) || 0) / 100
+      ngModelCtrl.$parsers.push(convertPercentageToFloat)
 
-      toUser = (text) ->
-        text * 100
-
-      ngModelCtrl.$parsers.push(fromUser)
-      ngModelCtrl.$formatters.push(toUser)
-
+      convertFloatToPercentage = (float) ->
+        Math.round(float * 100 * 10) / 10
+      ngModelCtrl.$formatters.push(convertFloatToPercentage)
   )
