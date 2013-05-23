@@ -10,7 +10,7 @@ files = [
   'vendor/assets/components/angular/angular.js',
   'vendor/assets/components/angular-resource/angular-resource.js',
   'vendor/assets/components/angular-mocks/angular-mocks.js',
-  'app/components/underscore/underscore.js',
+  'vendor/assets/components/underscore/underscore.js',
   'app/assets/javascripts/*.coffee',
   'app/assets/javascripts/**/*.coffee',
   'test/angular/mock/**/*.coffee',
