@@ -2,15 +2,13 @@ angular.module('divvyUp')
   .directive('duCurrency', ['$filter', ($filter) ->
     restrict: 'A',
     require: 'ngModel',
-    link: (scope, element, attr, ngModelCtrl) ->
-      fromUser = (amount) ->
+    link: (scope, element, attr, ctrl) ->
+      parseFormattedNumberAsFloat = (amount) ->
         return 0 unless amount
         parseFloat amount.replace(/[^0-9.]/g, '')
+      ctrl.$parsers.push(parseFormattedNumberAsFloat)
 
-      toUser = (amount) ->
+      formatNumberAsCurrency = (amount) ->
         $filter('currency')(amount, '')
-
-      ngModelCtrl.$parsers.push(fromUser)
-      ngModelCtrl.$formatters.push(toUser)
-
+      ctrl.$formatters.push(formatNumberAsCurrency)
   ])
