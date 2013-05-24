@@ -28,9 +28,11 @@
             Solve the simple workflow of divvying up portions of your paychecks into various savings “buckets.”
             
           </h2>
-            <div class="sign-in-btn"><a href="/auth/twitter">
-              <%= image_tag('twitter-sign-in.png', alt: 'Sign in with Twitter') %>
-            </a>
+            <div class="sign-in-btn">
+              <%= link_to image_tag('twitter-sign-in.png',
+                                    alt: 'Sign in with Twitter'),
+                          '/auth/twitter',
+                          class: 'twitter-sign-in-btn' %>
           </div>
         </div>
       </div>
