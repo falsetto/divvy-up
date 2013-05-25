@@ -53,6 +53,6 @@ captureTimeout = 5000;
 singleRun = false;
 
 proxies = {
-  '/': 'http://localhost:9292/'
+  '/': 'http://localhost:3000/'
 };
 urlRoot = '/_karma_/';
