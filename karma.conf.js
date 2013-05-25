@@ -14,7 +14,9 @@ files = [
   'app/assets/javascripts/*.coffee',
   'app/assets/javascripts/**/*.coffee',
   'test/angular/mock/**/*.coffee',
-  'test/angular/spec/**/*.coffee'
+  'test/angular/spec/**/*.coffee',
+  // this line directs Karma to watch these files for changes
+  {pattern: 'app/**/*', included: false, served: false},
 ];
 
 preprocessors = {
