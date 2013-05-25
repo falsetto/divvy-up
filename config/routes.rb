@@ -3,6 +3,8 @@ DivvyUpBaseBackend::Application.routes.draw do
 
   match 'app', to: 'pages#app'
 
+  match 'db_reset', to: 'test_support#db_reset' if Rails.env == 'e2e_test'
+
   get 'sessions/create'
   match 'logout', to: 'sessions#destroy'
 
