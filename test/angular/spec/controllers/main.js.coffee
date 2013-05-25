@@ -16,7 +16,7 @@ describe 'Controller: MainCtrl', ->
   
   beforeEach module 'divvyUp'
 
-  beforeEach inject ($controller, $http, $rootScope, bucketGroups, buckets, divvyer, serverSyncer) ->
+  beforeEach inject ($controller, $http, $rootScope, bucketGroups, buckets, serverSyncer) ->
     spyOn(bucketGroups, 'query').andCallFake (callback) ->
       callback(fakeBucketGroupsResponse)
 
@@ -30,9 +30,6 @@ describe 'Controller: MainCtrl', ->
 
   it 'sets default $http Accept header to "application/json"', inject ($http) ->
     expect($http.defaults.headers.common.Accept).toBe 'application/json'
-
-  it 'assigns divvyer service to scope', inject (divvyer) ->
-    expect(scope.divvyer).toBe divvyer
 
   it 'assigns buckets service to scope', inject (buckets) ->
     expect(scope.bucketsService).toEqual buckets

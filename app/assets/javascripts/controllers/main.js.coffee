@@ -1,9 +1,7 @@
 angular.module('divvyUp')
-  .controller('MainCtrl', [
-    '$http', '$scope','$window', 'bucketGroups', 'buckets', 'divvyer', 'serverSyncer',
-    ($http, $scope, $window, bucketGroups, buckets, divvyer, serverSyncer) ->
+  .controller('MainCtrl',
+    ($http, $scope, $window, bucketGroups, buckets, serverSyncer) ->
       $http.defaults.headers.common.Accept = 'application/json'
-      $scope.divvyer = divvyer
       $scope.bucketsService = buckets
 
       $scope.bucketGroups = bucketGroups.query (bucketGroups) ->
@@ -11,7 +9,7 @@ angular.module('divvyUp')
 
       $scope.$watch 'bucketGroup.id', (newValue, oldValue) ->
         if newValue
-          $scope.buckets = buckets.query(bucket_group_id: $scope.bucketGroup.id)
+          $scope.buckets = buckets.query $scope.bucketGroup
 
       $scope.queueSync = (form, object) ->
         serverSyncer.queueSync(object) if form.$valid
@@ -19,4 +17,4 @@ angular.module('divvyUp')
       $scope.destroyBucket = (bucket) ->
         if $window.confirm 'Are you sure?'
           buckets.destroy(bucket)
-  ])
+  )
