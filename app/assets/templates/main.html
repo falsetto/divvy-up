@@ -20,13 +20,13 @@
         <th>New Total</th>
       </tr>
     </thead>
-    <tbody>
-      <tr ng-repeat="bucket in buckets">
+    <tbody class="buckets">
+      <tr ng-repeat="bucket in buckets" class="bucket">
         <td>
             <div class="actions">
-              <a ng-click="destroyBucket(bucket)" class="btn btn-icon"><i class="icon-trash"></i></a>
-              <a ng-click="bucketsService.incrementPosition(bucket)" ng-class="{ disabled: $last }" class="btn btn-icon"><i class="icon-arrow-down"></i></a>
-              <a ng-click="bucketsService.decrementPosition(bucket)" ng-class="{ disabled: $first }" class="btn btn-icon"><i class="icon-arrow-up"></i></a>
+              <a ng-click="destroyBucket(bucket)" class="btn btn-icon delete-button"><i class="icon-trash"></i></a>
+              <a ng-click="bucketsService.incrementPosition(bucket)" ng-class="{ disabled: $last }" class="btn btn-icon shift-down"><i class="icon-arrow-down"></i></a>
+              <a ng-click="bucketsService.decrementPosition(bucket)" ng-class="{ disabled: $first }" class="btn btn-icon shift-up"><i class="icon-arrow-up"></i></a>
             </div>
 
             <form novalidate name="bucketForm">
