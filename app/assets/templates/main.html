@@ -50,8 +50,6 @@
                      type="text">
             </form>
         </td>
-        <td>$ <b>{{divvyer.divvyAmount(bucketGroup.amount, bucket) | currency:""}}</b></td>
-        <td>$ <span>{{divvyer.totalAfterDivvying(bucketGroup.amount, bucket) | currency:""}}</span></td>
         <td>$ <b class="bucket-amount">{{bucket.amount()}}</b></td>
         <td>$ <span class="total-after-divvying">{{bucket.leftover()}}</span></td>
       </tr>
