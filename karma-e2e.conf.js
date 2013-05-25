@@ -7,6 +7,7 @@ basePath = '';
 files = [
   ANGULAR_SCENARIO,
   ANGULAR_SCENARIO_ADAPTER,
+  'test/angular/e2e/window-dialog-commands.js',
   'test/angular/e2e/**/*.js.coffee',
   // this line directs Karma to watch these files for changes
   {pattern: 'app/**/*', included: false, served: false},
