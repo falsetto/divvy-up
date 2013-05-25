@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   def build_default_buckets
     default_bucket_group = bucket_groups.first
     default_bucket_group.buckets.build name: 'Tithe', percentage: 0.1
-    default_bucket_group.buckets.build name: 'Groceries', percentage: 0.1
+    default_bucket_group.buckets.build name: 'Groceries', percentage: 0.08
     default_bucket_group.buckets.build name: 'Mortgage', percentage: 0.15
   end
 end
