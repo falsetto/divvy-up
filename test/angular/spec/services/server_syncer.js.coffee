@@ -28,8 +28,7 @@ describe 'serverSyncer service', ->
     beforeEach inject (_buckets_) ->
       $httpBackend.whenGET('bucket_groups/1/buckets')
         .respond 200, bucketsResponse
-      buckets = _buckets_.query
-        bucket_group_id: 1
+      buckets = _buckets_.query id: 1
       $httpBackend.flush()
 
     afterEach ->
