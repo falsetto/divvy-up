@@ -12,6 +12,7 @@ gem 'inherited_resources'
 gem 'font-awesome-rails'
 gem 'ranked-model'
 gem 'unicorn'
+gem 'ngmin-rails'
 
 group :production do
   gem 'pg'
