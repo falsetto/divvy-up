@@ -1,5 +1,5 @@
 angular.module('divvyUp')
-  .factory 'serverSyncer', ['$timeout', ($timeout) ->
+  .factory 'serverSyncer', ($timeout) ->
     pendingSyncs = {}
 
     cancelPendingSync = (syncId) ->
@@ -12,4 +12,3 @@ angular.module('divvyUp')
       pendingSyncs[syncId] = $timeout ->
         object.$update()
       , 1250
-  ]

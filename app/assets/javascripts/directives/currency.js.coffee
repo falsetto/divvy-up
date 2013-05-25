@@ -1,5 +1,5 @@
 angular.module('divvyUp')
-  .directive('duCurrency', ['$filter', ($filter) ->
+  .directive('duCurrency', ($filter) ->
     restrict: 'A',
     require: 'ngModel',
     link: (scope, element, attr, ctrl) ->
@@ -11,4 +11,4 @@ angular.module('divvyUp')
       formatNumberAsCurrency = (amount) ->
         $filter('currency')(amount, '')
       ctrl.$formatters.push(formatNumberAsCurrency)
-  ])
+  )
