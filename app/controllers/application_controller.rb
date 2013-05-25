@@ -13,23 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_logged_in
-    redirect_to e2e_test_aware_app_url if current_user
-  end
-
-  def e2e_test_aware_app_url
-    if Rails.env == 'e2e-test'
-      'http://localhost:8080/app'
-    else
-      '/app'
-    end
-  end
-
-  def e2e_test_aware_root_url
-    if Rails.env == 'e2e-test'
-      'http://localhost:8080/'
-    else
-      '/'
-    end
+    redirect_to app_url if current_user
   end
 
   def current_user=(user)
@@ -42,6 +26,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    current_user || redirect_to('/')
+    current_user || redirect_to(root_url)
   end
 end
