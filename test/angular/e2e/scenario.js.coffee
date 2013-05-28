@@ -36,7 +36,13 @@ describe 'home page', ->
     signinButton = element('a.twitter-sign-in-btn')
     expect(signinButton.attr('href')).toBe '/auth/twitter'
     signinButton.click()
-    expect(browser().location().path()).toBe '/app'
+    expect(browser().window().path()).toBe '/app'
+
+describe 'authentication failure', ->
+  it 'redirects to the home page and shows an error message', ->
+    browser().navigateTo '/auth/failure?message=invalid_credentials'
+    expect(browser().window().path()).toBe '/'
+    expect(element('.error').text()).toMatch /Invalid credentials/
 
 describe 'app page', ->
   beforeEach login

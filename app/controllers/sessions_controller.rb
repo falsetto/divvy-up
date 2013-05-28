@@ -10,6 +10,11 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+  def auth_failure
+    flash[:error] = "Login failed with the following message: '#{params[:message].humanize}'. Please try again."
+    redirect_to root_url
+  end
+
   protected
 
   def auth_hash

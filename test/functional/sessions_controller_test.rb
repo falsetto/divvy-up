@@ -16,4 +16,10 @@ class SessionsControllerTest < ActionController::TestCase
     session['user_id'].must_equal nil
     assert_redirected_to root_path
   end
+
+  test 'shows an error on auth failure' do
+    get :auth_failure, message: 'invalid_credentials'
+    flash[:error].must_match /Invalid credentials/
+    assert_redirected_to root_path
+  end
 end
