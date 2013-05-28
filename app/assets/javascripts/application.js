@@ -12,6 +12,7 @@
 //
 //= require angular/angular
 //= require angular-resource/angular-resource
+//= require angular-mocks/angular-mocks
 //= require underscore/underscore
 //= require divvy-up
 //= require_tree ./services

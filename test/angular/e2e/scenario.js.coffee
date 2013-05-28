@@ -51,6 +51,10 @@ describe 'app page', ->
     logout()
     db_reset()
 
+  it 'notifies the user when API requests fail', ->
+    browser().navigateTo '/app?api_down'
+    expect(element('.request-error:visible').count()).toBe 1
+
   it 'provides a delete button for each bucket', ->
     confirmCancel()
     expect(buckets.count()).toBe 3
