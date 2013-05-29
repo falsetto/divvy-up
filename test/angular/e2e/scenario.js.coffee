@@ -53,7 +53,11 @@ describe 'app page', ->
 
   it 'notifies the user when API requests fail', ->
     browser().navigateTo '/app?api_down'
-    expect(element('.request-error:visible').count()).toBe 1
+    expect(element('.api-error:visible').count()).toBe 1
+
+  it 'does not show the request error notification when no request errors have occurred', ->
+    browser().navigateTo '/app'
+    expect(element('.api-error:visible').count()).toBe 0
 
   it 'provides a delete button for each bucket', ->
     confirmCancel()
