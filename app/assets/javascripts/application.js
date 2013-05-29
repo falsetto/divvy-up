@@ -10,8 +10,6 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require angular/angular
-//= require angular-resource/angular-resource
 //= require underscore/underscore
 //= require divvy-up
 //= require_tree ./services
