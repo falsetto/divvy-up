@@ -53,7 +53,11 @@
       </div>
     </div>
 
-    <%= javascript_include_tag 'application' %>
+    <% if Rails.env == 'e2e_test' %>
+      <%= javascript_include_tag 'application-e2e-test' %>
+    <% else %>
+      <%= javascript_include_tag 'application' %>
+    <% end %>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
