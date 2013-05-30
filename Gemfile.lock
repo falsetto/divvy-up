@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (3.2.13)
       actionpack (= 3.2.13)
@@ -46,11 +46,16 @@ GEM
       debugger-ruby_core_source (~> 1.2.0)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.0)
+    dotenv (0.7.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    ffi (1.8.1)
     font-awesome-rails (3.0.2.0)
       railties (>= 3.1)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
+      thor (>= 0.13.6)
     has_scope (0.5.1)
     hashie (2.0.3)
     hike (1.2.2)
@@ -64,6 +69,12 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.7.7)
     kgio (2.8.0)
+    kicker (2.6.1)
+      listen
+    listen (1.0.3)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      rb-kqueue (>= 0.2)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -132,6 +143,11 @@ GEM
     rake (10.0.4)
     ranked-model (0.2.0)
       activerecord (>= 3.0.3)
+    rb-fsevent (0.9.3)
+    rb-inotify (0.9.0)
+      ffi (>= 0.5.0)
+    rb-kqueue (0.2.0)
+      ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
     responders (0.9.3)
@@ -168,8 +184,10 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   font-awesome-rails
+  foreman
   inherited_resources
   jquery-rails
+  kicker
   minitest-reporters
   minitest-spec-rails
   ngmin-rails

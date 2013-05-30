@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.13'
 
@@ -34,6 +34,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'foreman'
+  gem 'kicker'
   gem 'sqlite3'
   gem 'pry'
   gem 'pry-debugger'
