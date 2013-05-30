@@ -15,8 +15,10 @@ $ export TWITTER_KEY=...
 
 Note: `npm` comes with [Node.js](http://nodejs.org/)
 
-`$ bundle install`
-`$ npm install -g karma`
+```
+$ bundle install
+$ npm install -g karma
+```
 
 ## Set up databases
 
