@@ -1,4 +1,4 @@
-# Divvy Up
+![Divvy Up](https://dl.dropboxusercontent.com/u/1238280/divvy-up/divvy-up-logo.png)
 
 Solve the simple workflow of divvying up portions of your paychecks into various savings “buckets.”
 
