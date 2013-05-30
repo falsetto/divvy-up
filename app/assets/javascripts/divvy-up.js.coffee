@@ -6,7 +6,7 @@ angular.module('divvyUp', ['ngResource'])
   #     config.timeout = 5000
   #     config
   # )
-  .config ($httpProvider, $locationProvider, $routeProvider) ->
+  .config ($httpProvider) ->
     # TODO: Enable once next release of Angular is made (and includes
     # this new functionality)
     # $httpProvider.interceptors.push 'timeoutHttpIntercept'
@@ -19,8 +19,3 @@ angular.module('divvyUp', ['ngResource'])
             $q.reject(errorResponse)
         )
     ]
-
-    $locationProvider.html5Mode true
-    $routeProvider.when '/app',
-      controller: 'MainCtrl'
-      templateUrl: '/assets/main.html'
