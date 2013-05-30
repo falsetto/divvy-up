@@ -18,6 +18,10 @@ body {
   padding-bottom: 1em;
 }
 
+a, img {
+  border: none;
+}
+
 a { text-decoration:none; }
 a, a:visited { color:#7d8888; }
 a:hover { color:$orange; }
