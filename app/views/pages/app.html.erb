@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody class="buckets">
-        <tr ng-repeat="bucket in buckets" class="bucket">
+        <tr ng-repeat="bucket in buckets" class="bucket ng-cloak">
           <td>
               <div class="actions">
                 <a ng-click="destroyBucket(bucket)" class="btn btn-icon delete-button"><i class="icon-trash"></i></a>
@@ -71,7 +71,7 @@
       </tbody>
     </table>
   </div>
-  <div ng-show="apiError" class="api-error">
+  <div ng-show="apiError" class="api-error ng-cloak">
     <div class="modal-background"></div>
     <div class="content modal">
       <p class="error">We apologize, but there was an error communicating with the server. Please check your Internet connection and refresh this page to try again.</p>
