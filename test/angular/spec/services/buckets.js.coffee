@@ -5,10 +5,10 @@ describe 'buckets Service', ->
 
   beforeEach module 'divvyUp', 'mockedBuckets'
 
-  beforeEach inject (_$httpBackend_, _buckets_, defaultJSON) ->
+  beforeEach inject (_$httpBackend_, _buckets_, defaultBucketsJSON) ->
     $httpBackend = _$httpBackend_
     $httpBackend.expectGET('bucket_groups/1/buckets')
-      .respond 200, defaultJSON
+      .respond 200, defaultBucketsJSON
     buckets = _buckets_.query
       id: 1
       amount: 1000

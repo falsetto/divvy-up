@@ -1,5 +1,5 @@
 angular.module('mockedBuckets', [])
-  .value('defaultJSON', [
+  .value('defaultBucketsJSON', [
     id: 1
     bucket_group_id: 1
     name: 'Tithe'
