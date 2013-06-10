@@ -6,21 +6,16 @@ describe 'Controller: MainCtrl', ->
     amount:1000
   ]
 
-  fakeBucketsResponse = [
-    {name: 'Tithe', percentage: 0.1, priority: 1},
-    {name: 'Mortgage', percentage: 0.15, priority: 2}
-  ]
-
   scope = null
   ctrl = null
   
-  beforeEach module 'divvyUp'
+  beforeEach module 'divvyUp', 'mockedBuckets'
 
-  beforeEach inject ($controller, $http, $rootScope, bucketGroups, buckets, serverSyncer) ->
+  beforeEach inject ($controller, $http, $rootScope, bucketGroups, buckets, defaultBucketsJSON, serverSyncer) ->
     spyOn(bucketGroups, 'query').andCallFake (callback) ->
       callback(fakeBucketGroupsResponse)
 
-    spyOn(buckets, 'query').andReturn(fakeBucketsResponse)
+    spyOn(buckets, 'query').andReturn(defaultBucketsJSON)
     spyOn(buckets, 'destroy')
 
     spyOn(serverSyncer, 'queueSync')
@@ -37,9 +32,9 @@ describe 'Controller: MainCtrl', ->
   it "assigns the current user's first bucket group to scope", ->
     expect(scope.bucketGroup).toEqual fakeBucketGroupsResponse[0]
 
-  it "assigns the current user's buckets to scope", ->
+  it "assigns the current user's buckets to scope", inject (defaultBucketsJSON) ->
     scope.$digest()
-    expect(scope.buckets).toEqual(fakeBucketsResponse)
+    expect(scope.buckets).toEqual(defaultBucketsJSON)
 
   it 'assigns a queueSync function to scope', ->
     expect(scope.queueSync).toEqual(jasmine.any(Function))
