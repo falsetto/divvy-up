@@ -1,23 +1,7 @@
 describe 'serverSyncer service', ->
   $httpBackend = null
-  bucketsResponse = [
-    id: 1
-    bucket_group_id: 1
-    name: 'tithe'
-    percentage: 0.1
-  ,
-    id: 2
-    bucket_group_id: 1
-    name: 'mortgage'
-    percentage: 0.15
-  ,
-    id: 3
-    bucket_group_id: 1
-    name: 'fun'
-    percentage: 0.05
-  ]
 
-  beforeEach module 'divvyUp'
+  beforeEach module 'divvyUp', 'mockedBuckets'
 
   beforeEach inject ($injector) ->
     $httpBackend = $injector.get('$httpBackend')
@@ -25,9 +9,9 @@ describe 'serverSyncer service', ->
   describe '.queueSync', ->
     buckets = null
 
-    beforeEach inject (_buckets_) ->
+    beforeEach inject (_buckets_, defaultBucketsJSON) ->
       $httpBackend.whenGET('bucket_groups/1/buckets')
-        .respond 200, bucketsResponse
+        .respond 200, defaultBucketsJSON
       buckets = _buckets_.query id: 1
       $httpBackend.flush()
 
