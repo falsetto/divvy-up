@@ -31,6 +31,6 @@ $ bundle exec rake db:test:prepare
 
 `$ bundle exec foreman start`
 
-Note: Rails test are not currently executed by Foreman as the exit code from the Rake task kills the entire Foreman process. Until I can figure out how to remedy this, you'll need to run Rails tests by hand:
+Note: Rails tests are not currently executed by Foreman as the exit code from the Rake task kills the entire Foreman process. Until I can figure out how to remedy this, you'll need to run Rails tests by hand:
 
 `$ bundle exec rake test`
